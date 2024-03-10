@@ -11,4 +11,7 @@ export default defineConfig({
   vite: () => ({
     plugins: [vue()],
   }),
+  manifest: {
+    permissions: ["storage"],
+  },
 });
