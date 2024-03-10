@@ -14,7 +14,8 @@
     "compile": "vue-tsc --noEmit",
     "postinstall": "wxt prepare",
     "prepare": "husky install",
-    "cz": "cz"
+    "cz": "cz",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "vue": "^3.4.0"
@@ -22,13 +23,18 @@
   "devDependencies": {
     "@commitlint/cli": "19.0.3",
     "@commitlint/config-conventional": "19.0.3",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
     "@vitejs/plugin-vue": "^5.0.1",
     "autoprefixer": "^10.4.16",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.22.0",
+    "husky": "^8.0.0",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.3.3",
+    "typescript-eslint": "^7.1.1",
     "vue-tsc": "^1.8.27",
-    "wxt": "^0.17.0",
-    "husky": "^8.0.0"
+    "wxt": "^0.17.0"
   }
 }
