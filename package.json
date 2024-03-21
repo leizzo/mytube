@@ -19,6 +19,8 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@webext-core/messaging": "^1.4.0",
+    "@webext-core/proxy-service": "^1.2.0",
     "vue": "^3.4.0"
   },
   "devDependencies": {
