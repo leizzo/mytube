@@ -1,29 +1,40 @@
 <script lang="ts" setup>
-import { ref, watch } from "vue";
-import { getMessageService } from "@/hooks/proxyService";
+import { watch, ref } from "vue";
+import { getDisabledStatusService } from "~/services/disabledStatusService";
+import type { DisabledStatus } from "~/services/disabledStatusService";
 
-const { getDisabledStatus, setDisabledStatus } = getMessageService();
+const { getDisabledStatus, setDisabledStatus } = getDisabledStatusService();
 
-const disableHome = ref<boolean | null>(false);
-const disableRecommendations = ref<boolean | null>(false);
+type Entries<T> = {
+  [K in keyof T]: [K, T[K]];
+}[keyof T][];
+
+const disabledStatus = ref<DisabledStatus>({
+  Home: false,
+  Recommendations: false,
+  Shorts: false,
+  Comments: false,
+  Notifications: false,
+});
 
 async function init() {
-  try {
-    disableHome.value = await getDisabledStatus("local:disabledHome");
-    disableRecommendations.value = await getDisabledStatus(
-      "local:disabledRecommendations"
-    );
-  } catch (error) {
-    console.error(error);
+  const values = (await getDisabledStatus()) as DisabledStatus;
+
+  if (values) {
+    disabledStatus.value = values;
   }
 }
 
 init();
 
-watch(disableHome, (val) => setDisabledStatus("local:disabledHome", val));
+watch(
+  disabledStatus,
+  (changedValue) => {
+    console.log(changedValue);
 
-watch(disableRecommendations, (val) =>
-  setDisabledStatus("local:disabledRecommendations", val)
+    setDisabledStatus(changedValue as never);
+  },
+  { deep: true }
 );
 </script>
 
@@ -31,27 +42,20 @@ watch(disableRecommendations, (val) =>
   <div class="bg-slate-600 text-white font-bold p-2 w-60">
     <h1>My Tube</h1>
 
-    <div class="mt-2">
-      <label class="flex" for="isHomePageDisabled">
+    <div
+      v-for="(item) in Object.entries(disabledStatus) as Entries<DisabledStatus>"
+      :key="item[0]"
+      class="mt-2"
+      v-memo="[disabledStatus[item[0]]]"
+    >
+      <label class="flex" :for="item[0]">
         <input
-          v-model="disableHome"
+          v-model.lazy="disabledStatus[item[0]]"
+          :id="item[0]"
           type="checkbox"
-          id="isHomePageDisabled"
           class="mr-1"
         />
-        Disable Home
-      </label>
-    </div>
-
-    <div class="mt-2">
-      <label class="flex" for="isRecommendationsDisabled">
-        <input
-          v-model="disableRecommendations"
-          type="checkbox"
-          id="isRecommendationsDisabled"
-          class="mr-1"
-        />
-        Disable Recommendations
+        Disable {{ item[0] }}
       </label>
     </div>
   </div>

@@ -1,11 +1,5 @@
-import { registerMessageService } from "@/hooks/proxyService";
+import { registerDisabledStatusService } from "@/services/disabledStatusService";
 
 export default defineBackground(() => {
-  registerMessageService();
-
-  browser.runtime.onInstalled.addListener(({ reason }) => {
-    if (reason === "install") {
-      storage.setItem("local:testStore", true);
-    }
-  });
+  registerDisabledStatusService();
 });
