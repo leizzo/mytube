@@ -1,3 +1,11 @@
+## Unreleased
+
+### Feat
+
+- **disabled-status**: comments, recommendations, and ads remover
+- **show/hide-recommendations**: show/hide recommendations with checkbox control (#25)
+- **home-page**: disabled control for home page
+
 ## 0.1.0 (2024-03-10)
 
 ### Feat
