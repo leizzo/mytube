@@ -8,7 +8,6 @@ export const observeUrl = (
   const observer = new MutationObserver(function () {
     if (location.href !== previousUrl) {
       previousUrl = location.href;
-
       // Here you would execute the code you want
       callback({ path: location.pathname, query: location.search });
     }
