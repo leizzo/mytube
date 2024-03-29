@@ -22,5 +22,5 @@ class DisabledStatusService {
 export const [registerDisabledStatusService, getDisabledStatusService] =
   defineProxyService(
     "DisabledStatusService",
-    () => new DisabledStatusService()
+    () => new DisabledStatusService(),
   );

@@ -1,6 +1,6 @@
 export function waitForAddedNode(
   params: { id: string; parent?: HTMLDivElement; recursive: boolean },
-  callback: (el: HTMLDivElement) => void
+  callback: (el: HTMLDivElement) => void,
 ) {
   new MutationObserver((mutations, observer) => {
     const el = document.querySelector(params.id) as HTMLDivElement;
