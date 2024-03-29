@@ -34,7 +34,7 @@ watch(
 
     setDisabledStatus(changedValue as never);
   },
-  { deep: true }
+  { deep: true },
 );
 </script>
 
@@ -43,7 +43,7 @@ watch(
     <h1>My Tube</h1>
 
     <div
-      v-for="(item) in Object.entries(disabledStatus) as Entries<DisabledStatus>"
+      v-for="item in Object.entries(disabledStatus) as Entries<DisabledStatus>"
       :key="item[0]"
       class="mt-2"
       v-memo="[disabledStatus[item[0]]]"

@@ -7,7 +7,7 @@ export async function useWatch() {
   } = useYoutubeElements();
 
   const disabledStatus = await storage.getItem<DisabledStatus>(
-    "local:disabledStatus"
+    "local:disabledStatus",
   );
 
   // When user change the recommendation state
@@ -23,7 +23,7 @@ export async function useWatch() {
         (document.querySelector(el) as HTMLElement).style.display =
           disabledStatus.Comments ? "none" : "block";
       }
-    }
+    },
   );
 
   // Initialize

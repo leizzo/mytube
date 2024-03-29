@@ -1,5 +1,11 @@
 ## Unreleased
 
+## 0.0.0
+
+### Patch Changes
+
+- structure changes
+
 ### Feat
 
 - **disabled-status**: comments, recommendations, and ads remover

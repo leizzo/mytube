@@ -2,7 +2,7 @@ export const observeUrl = (
   callback: (data: {
     path: Location["pathname"];
     query: Location["search"];
-  }) => void
+  }) => void,
 ) => {
   let previousUrl = "";
   const observer = new MutationObserver(function () {
@@ -15,7 +15,6 @@ export const observeUrl = (
   const config = { subtree: true, childList: true };
   observer.observe(document, config);
 };
-
 
 export const isHomePage = (path: string) => {
   const pattern = /^\/$/;
