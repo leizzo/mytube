@@ -15,6 +15,7 @@ const disabledStatus = ref<DisabledStatus>({
   Shorts: false,
   Comments: false,
   Notifications: false,
+  Thumbnail: false,
 });
 
 async function init() {
@@ -30,11 +31,9 @@ init();
 watch(
   disabledStatus,
   (changedValue) => {
-    console.log(changedValue);
-
     setDisabledStatus(changedValue as never);
   },
-  { deep: true },
+  { deep: true }
 );
 </script>
 
