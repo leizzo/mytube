@@ -7,6 +7,7 @@ export type DisabledStatus = {
   Comments: boolean;
   Shorts: boolean;
   Notifications: boolean;
+  Thumbnail: boolean;
 };
 
 class DisabledStatusService {
