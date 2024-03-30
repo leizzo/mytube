@@ -1,5 +1,5 @@
 {
-  "name": "mytube",
+  "name": "@mytube/extension",
   "private": true,
   "version": "0.0.0",
   "type": "module",
